@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<link rel="stylesheet" href="loading.css">
+
+</head>
+
+
+
+
+<script>
+
+
+var backgroundPay = $('<div />').css({
+	width:'100%',
+	height:'100%',
+	'background-color':'#000',
+	'opacity':'.7',
+	top:'0px',
+	left:'0px',
+	position:'fixed',
+	'z-index':'100000000'
+
+})
+
+var widgetPay = $('<div />').css({
+	width:'70%',
+	opacity:'1',
+	height:'50%',
+	'background-color':'#222',
+	top:'25%',
+	left:'15%',
+	position:'fixed',
+	padding:'10px',
+	'box-shadow': '#000 2px 2px',
+
+	'z-index':'100000001'
+
+}).attr('id', 'paymentArea1');
+
+
+
+var inject = function(filename, filetype)
+	{
+		if (filetype == "js")
+		{ //if filename is a external JavaScript file
+			// alert('called');
+			var fileref = document.createElement('script')
+			fileref.setAttribute("type", "text/javascript")
+			fileref.setAttribute("src", filename)
+
+		}
+		else if (filetype == "css")
+		{ //if filename is an external CSS file
+			var fileref = document.createElement("link")
+			fileref.setAttribute("rel", "stylesheet")
+			fileref.setAttribute("type", "text/css")
+			fileref.setAttribute("href", filename)
+
+		}
+		if (typeof fileref != "undefined")
+			document.getElementsByTagName("head")[0].appendChild(fileref)
+	};
+
+inject('//raw.githubusercontent.com/CodeCloudMe/dropper/master/loading.css', 'css')
+
+
+var widgetText = '<div  style="position:absolute"> <div id="qrArea1" style="display:inline-block; float:left; width:30%; height:300px; min-height:90%; max-height:300px; min-width:30%; max-width:30%; margin-top:10px;"><img src="http://qrickit.com/api/qr?d=http://anyurl.com&addtext=Hello+World&qrsize=150&t=p&e=m"></div><div style="display:inline-block; width:65%; max-height:90%; min-height:90%; max-width: 65%; min-width:65%; height:300px; text-align:center; margin-top:5%; marging-left:2%; float:right;" id="loadingArea1">Awating payment... Loading splash thing...<br><div id="contThing"><div style="position:absolute; top:150px; left:150%">fff<div id="loadingArea2" style="color:white">Awaiting Payment<div class="assembly"><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="tri"></div><div class="hex"></div></div></div></div></div></div></div>'
+
+widgetPay.html(widgetText);
+
+$('html').append(widgetPay);
+$('html').append(backgroundPay);
+
+
+
+
+
+
+</script>
+
+</html>
